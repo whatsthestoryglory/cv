@@ -24,7 +24,7 @@ enableEmoji: true
 # Site parameters
 params:
   # GitHub repo URL and branch of your site
-  gitRepo: https://github.com/hugo-toha/hugo-toha.github.io
+  gitRepo: https://github.com/whatsthestoryglory/cv
   gitBranch: main
 
 # specify whether you want to write some blog posts or not
@@ -39,3 +39,6 @@ params:
     enable: true
 
   background: "images/mtnbg2.jpg"
+
+  # Google Analytics 4
+  googleAnalyticsID: "G-MXY64PY325"
