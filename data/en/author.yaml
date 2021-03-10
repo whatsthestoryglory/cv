@@ -1,0 +1,17 @@
+# My info
+name: "Cameron Willmot"
+nickname: "Cameron"
+image: "images/author/john.png"
+# Greeting message
+greeting: "Hi, my name is"
+
+# Contact information
+contactInfo:
+    email: "cwillmot@gmail.com"
+
+# Sumarry info
+summary:
+    - I am a Quality Manager
+    - I am an Operations Manager
+    - I am learning Data Science
+    - I love using data to solve business problems

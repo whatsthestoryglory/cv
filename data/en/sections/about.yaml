@@ -1,0 +1,35 @@
+section:
+  name: About
+  id: about
+  enable: true
+  weight: 1
+  showOnNavbar: true
+  template: sections/about.html
+
+designation: Quality Manager
+
+summary: "I am a seasoned Quality Manager with over 10 years of experience.  I collect data, study it for trends, and use that to drive improvement initiatives."
+
+socialLinks:
+- name: Github
+  icon: "fab fa-github"
+  url: "https://github.com/whatsthestoryglory"
+
+# soft skills here
+softSkills:
+- name: Leadership
+  percentage: 92
+  color: blue
+- name: Daily Mgmt
+  percentage: 80
+  color: green
+- name: Data Analysis
+  percentage: 75
+  color: yellow
+- name: Problem Solving
+  percentage: 90
+  color: orange
+- name: R
+  percentage: 70
+  color: "#e7d378"
+  

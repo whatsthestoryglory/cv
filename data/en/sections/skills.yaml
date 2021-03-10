@@ -1,0 +1,15 @@
+section:
+  name: Skills
+  id: skills
+  enable: true
+  weight: 2
+  showOnNavbar: true
+
+skills:
+- name: R
+  icon: /images/sections/skills/Rlogo.png
+  summary: "Capable of analyzing data and preparing interactive reports using R."
+  url: "https://www.r-project.org"
+- name: Root Cause Analysis
+  icon: images/sections/skills/rootcause.jpg
+  summary: "Experienced at driving to Root Cause on a variety of problems"

@@ -1,0 +1,53 @@
+section:
+  name: Experiences
+  id: experiences
+  enable: true
+  weight: 3
+  showOnNavbar: true
+
+
+experiences:
+- company:
+    name: VIQUA / Trojan Technologies
+    url: "https://www.viqua.com"
+    location: Guelph, Ontario
+    overview: VIQUA is the residential arm of Trojan Technologies, a world-renowned company that manufacturers water treatment equipment.
+  positions:
+  - designation: Quality Manager
+    start: Nov 2013
+    end: Dec 2020
+    responsibilities:
+    - Develop and implement Quality Standards and implementation plans to drive continuous improvement throughout the organization using lean manufacturing principles
+    - Provide direct on-site technical and sales support for key customers and business objectives on fluorescent UV disinfection equipment
+    - Ensure quality system and organizational practices comply with all appropriate government regulations and relevant standards
+    - Represent Quality and Operations teams on cross functional change management projects ensuring all departments aligned and consensus achieved prior to implementation
+    - Develop training modules for internal and external use on product functionality and operations leadership
+    - Develop reporting dashboard for automated collection and summarization of data enabling the identification of emerging quality trends
+  - designation: Quality Specialist
+    start: Sept 2012
+    end: Nov 2013
+    responsibilities:
+    - Perform root cause countermeasure (RCCM) activities in response to internal and external metrics
+    - Develop and implement Process at a Glance training documentation
+    - Initiate, lead and support product change projects and new product launches
+  - designation: Technical Support Representative
+    start: Feb 2010
+    end: Sept 2012
+    responsibilities:
+    - Provide prompt, friendly support to dealers, end users, and internal customers on product installation and operation via telephone, fax and email
+    - Thoroughly document interactions and provide reporting to leadership team on trends
+
+- company:
+    name: Q2 Management
+    url: "https://www.q2management.com"
+    location: Newmarket, Ontario and Columbus, Ohio
+    overview: Q2 Management is a contract supplier of Quality services for the automotive industry.  They provide inspection, warehousing, assembly, engineering and training services to customers throughout North America
+  positions:
+  - designation: Regional Operations Manager
+    start: Jan 2006
+    end: Sept 2009
+    responsibilities:
+    - Oversee all active operations sites
+    - Train and lead inspectors and team leaders on performing effective Quality inspections
+    - Develop and implement organizational Layered Process audit program
+    - Use lean manufacturing principles to develop high throughput, high accuracy inspection processes for short, medium, and long term projects
