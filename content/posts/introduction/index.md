@@ -1,7 +1,7 @@
 ---
 title: "Introduction"
 date: 2021-03-09T15:29:25-05:00
-description: Introduction to Sample Post
+description: Getting Started
 menu:
   sidebar:
       name: Introduction
@@ -9,8 +9,6 @@ menu:
       weight: 10
 ---
 
-Greeting! This is an introduction post. This post tests the followings:
+Greetings and welcome!  This is my first post to my CV site.
 
-- Hero image is in the same directory as the post.
-- This post should be at top of the sidebar.
-- Post author should be the same as specified in `author.yaml` file.
+This site will serve as a landing page for projects I work on in my spare time  You can expect to see some cool data analysis using `R` and `python`.

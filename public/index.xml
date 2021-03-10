@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Cameron&#39;s CV</title>
-    <link>https://toriandcam.willmot.ca/</link>
+    <link>https://cameron.willmot.ca/</link>
     <description>Recent content on Cameron&#39;s CV</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 09 Mar 2021 17:00:00 -0500</lastBuildDate>
     
-	<atom:link href="https://toriandcam.willmot.ca/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cameron.willmot.ca/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Ontario COVID Tracking</title>
-      <link>https://toriandcam.willmot.ca/posts/covid/</link>
+      <link>https://cameron.willmot.ca/posts/covid/</link>
       <pubDate>Tue, 09 Mar 2021 17:00:00 -0500</pubDate>
       
-      <guid>https://toriandcam.willmot.ca/posts/covid/</guid>
+      <guid>https://cameron.willmot.ca/posts/covid/</guid>
       <description>Like many people, I have been drawn to the vast amounts of data being made available by governments as they track the COVID-19 pandemic. As I progressed through the data loading and cleaning phases of learning data science, I thought there might be a cool opportunity for a quick visualization of the data I was playing with.
   While doing this I learned a ton about
  Locating and collecting data from the Ontario Government Cleaning and associating data where key fields were not used consistently Handling map data and simplifying geography so the leaflet didn&amp;rsquo;t end up being huge and take a long time to render How to use leaflet  </description>
@@ -24,12 +24,12 @@
     
     <item>
       <title>Introduction</title>
-      <link>https://toriandcam.willmot.ca/posts/introduction/</link>
+      <link>https://cameron.willmot.ca/posts/introduction/</link>
       <pubDate>Tue, 09 Mar 2021 15:29:25 -0500</pubDate>
       
-      <guid>https://toriandcam.willmot.ca/posts/introduction/</guid>
-      <description>Greeting! This is an introduction post. This post tests the followings:
- Hero image is in the same directory as the post. This post should be at top of the sidebar. Post author should be the same as specified in author.yaml file.  </description>
+      <guid>https://cameron.willmot.ca/posts/introduction/</guid>
+      <description>Greetings and welcome! This is my first post to my CV site.
+This site will serve as a landing page for projects I work on in my spare time You can expect to see some cool data analysis using R and python.</description>
     </item>
     
   </channel>

@@ -15,6 +15,14 @@ socialLinks:
   icon: "fab fa-github"
   url: "https://github.com/whatsthestoryglory"
 
+- name: LinkedIN
+  icon: "fab fa-linkedin"
+  url: "https://www.linkedin.com/in/cameron-willmot/"
+
+- name: Kaggle
+  icon: "fab fa-kaggle"
+  url: "https://www.kaggle.com/whatsthestory"
+
 # soft skills here
 softSkills:
 - name: Leadership

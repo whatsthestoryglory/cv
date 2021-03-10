@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Cameron&#39;s CV</title>
-    <link>https://toriandcam.willmot.ca/tags/</link>
+    <link>https://cameron.willmot.ca/tags/</link>
     <description>Recent content in Tags on Cameron&#39;s CV</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://toriandcam.willmot.ca/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cameron.willmot.ca/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
