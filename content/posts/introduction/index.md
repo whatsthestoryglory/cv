@@ -2,6 +2,7 @@
 title: "Introduction"
 date: 2021-03-09T15:29:25-05:00
 description: Getting Started
+hero: /images/posts/writing-posts/Idea.svg
 menu:
   sidebar:
       name: Introduction

@@ -1,7 +1,8 @@
 ---
-title: "Ontario COVID Tracking"
+title: "Ontario COVID-19 Active Case Tracking"
 date: 2021-03-09T17:00:00-05:00
-description: Ontario COVID-19 Case Tracking Map
+description: Ontario COVID-19 Active Case Tracking Map
+hero: /images/posts/writing-posts/Report.svg
 menu:
   sidebar:
       name: Ontario COVID
@@ -19,3 +20,6 @@ While doing this I learned a ton about
 - Cleaning and associating data where key fields were not used consistently
 - Handling map data and simplifying geography so the leaflet didn't end up being huge and take a long time to render
 - How to use leaflet
+
+
+Read more about this on [my github](https://github.com/whatsthestoryglory/OntarioCOVID)

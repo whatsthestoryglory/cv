@@ -38,7 +38,7 @@ params:
   newsletter:
     enable: true
 
-  background: "images/mtnbg2.jpg"
+  background: "images/climbingbg.jpg"
 
   # Google Analytics 4
   googleAnalyticsID: "G-MXY64PY325"
