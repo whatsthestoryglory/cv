@@ -1,0 +1,146 @@
+---
+title: "UnsupervisedMethods"
+author: "Cameron"
+date: 2021-03-11T11:04:25-05:00
+output: html_document
+---
+
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="unsupervised-statistical-learning-methods" class="section level1">
+<h1>Unsupervised Statistical Learning Methods</h1>
+<p>Earlier this week I completed a Statistical Learning course from Stanford put on by Trevor Hastie and Rob Tibshirani. I was drawn to this course because I had stumbled upon <code>An Introduction to Statistical Learning</code> as I looked to learn more about how to measure, and perhaps more importantly, visualize the Quality data I was reviewing in my role as a Quality Manager. The following post is more or less the same as the .rmd created within the course as I wrote it while following along with their video. I’m posting it here as an exercise both in learning <code>blogdown</code> to build this site, but also to drive me to make further improvements. You may notice some notes I left for myself that I wanted to come back to. Without further adeiu, I bring you Principal Components Analysis.</p>
+<div id="principal-components-analysis" class="section level2">
+<h2>Principal Components Analysis</h2>
+<p>Start by using the <code>USArrests</code> data which comes built in to <code>R</code></p>
+<pre class="r"><code>dimnames(USArrests)</code></pre>
+<pre><code>## [[1]]
+##  [1] &quot;Alabama&quot;        &quot;Alaska&quot;         &quot;Arizona&quot;        &quot;Arkansas&quot;      
+##  [5] &quot;California&quot;     &quot;Colorado&quot;       &quot;Connecticut&quot;    &quot;Delaware&quot;      
+##  [9] &quot;Florida&quot;        &quot;Georgia&quot;        &quot;Hawaii&quot;         &quot;Idaho&quot;         
+## [13] &quot;Illinois&quot;       &quot;Indiana&quot;        &quot;Iowa&quot;           &quot;Kansas&quot;        
+## [17] &quot;Kentucky&quot;       &quot;Louisiana&quot;      &quot;Maine&quot;          &quot;Maryland&quot;      
+## [21] &quot;Massachusetts&quot;  &quot;Michigan&quot;       &quot;Minnesota&quot;      &quot;Mississippi&quot;   
+## [25] &quot;Missouri&quot;       &quot;Montana&quot;        &quot;Nebraska&quot;       &quot;Nevada&quot;        
+## [29] &quot;New Hampshire&quot;  &quot;New Jersey&quot;     &quot;New Mexico&quot;     &quot;New York&quot;      
+## [33] &quot;North Carolina&quot; &quot;North Dakota&quot;   &quot;Ohio&quot;           &quot;Oklahoma&quot;      
+## [37] &quot;Oregon&quot;         &quot;Pennsylvania&quot;   &quot;Rhode Island&quot;   &quot;South Carolina&quot;
+## [41] &quot;South Dakota&quot;   &quot;Tennessee&quot;      &quot;Texas&quot;          &quot;Utah&quot;          
+## [45] &quot;Vermont&quot;        &quot;Virginia&quot;       &quot;Washington&quot;     &quot;West Virginia&quot; 
+## [49] &quot;Wisconsin&quot;      &quot;Wyoming&quot;       
+## 
+## [[2]]
+## [1] &quot;Murder&quot;   &quot;Assault&quot;  &quot;UrbanPop&quot; &quot;Rape&quot;</code></pre>
+<pre class="r"><code>apply(USArrests,2,mean)</code></pre>
+<pre><code>##   Murder  Assault UrbanPop     Rape 
+##    7.788  170.760   65.540   21.232</code></pre>
+<pre class="r"><code>apply(USArrests,2,var)</code></pre>
+<pre><code>##     Murder    Assault   UrbanPop       Rape 
+##   18.97047 6945.16571  209.51878   87.72916</code></pre>
+<p>From the above output you can see that <code>Assault</code> has significantly higher variance than the other variables and would dominate the principal components so we’re going to standardize the variables before performing PCA</p>
+<div id="standardization" class="section level3">
+<h3>Standardization</h3>
+<pre class="r"><code>pca.out=prcomp(USArrests, scale=TRUE)
+pca.out</code></pre>
+<pre><code>## Standard deviations (1, .., p=4):
+## [1] 1.5748783 0.9948694 0.5971291 0.4164494
+## 
+## Rotation (n x k) = (4 x 4):
+##                 PC1        PC2        PC3         PC4
+## Murder   -0.5358995  0.4181809 -0.3412327  0.64922780
+## Assault  -0.5831836  0.1879856 -0.2681484 -0.74340748
+## UrbanPop -0.2781909 -0.8728062 -0.3780158  0.13387773
+## Rape     -0.5434321 -0.1673186  0.8177779  0.08902432</code></pre>
+<pre class="r"><code>names(pca.out)</code></pre>
+<pre><code>## [1] &quot;sdev&quot;     &quot;rotation&quot; &quot;center&quot;   &quot;scale&quot;    &quot;x&quot;</code></pre>
+<pre class="r"><code>biplot(pca.out, scale=0, cex=.6)</code></pre>
+<p><img src="/posts/unsupervised/unsupervised_learning_files/figure-html/standardize-1.png" width="672" /></p>
+<p><em>Can I change biplot to something in plotly or ggplot? Come back and check…</em></p>
+<p>Here we see the directions of the loadings for the principal components chosen in red, and each state showing where it lands in the two principal components</p>
+<p>Recall how in the previous chunk the loading vectors were negative, so they pull to the left of the graphic.</p>
+<p>Note how 3 of the 4 variables are generally towards the same direction of the X axis, Murder, Assault, and Rape. So we can say from this that PC1 is a general measure of overall crime.</p>
+<p>Then looking at PC2, the Y axis, we can see that it’s mostly a measure of urban population.</p>
+</div>
+</div>
+<div id="k-means-clustering" class="section level2">
+<h2>K-Means Clustering</h2>
+<p>K-Means clustering can be applied to any dimension but is going to be demonstrated here in two because it makes plotting pictures easy</p>
+<p><code>I should consider coming back to this exercise to do it in 3 dimensions and make a 3D plotly plot of it</code></p>
+<pre class="r"><code>set.seed(101)
+x=matrix(rnorm(100*2),100,2)
+xmean=matrix(rnorm(8,sd=4),4,2)
+which=sample(1:4,100,replace=TRUE)
+x=x+xmean[which,]
+plot(x,col=which,pch=19)</code></pre>
+<p><img src="/posts/unsupervised/unsupervised_learning_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>So with this data we know the clusters but now we’re going to strip that data and provide it to the k-means clustering algorithm and see how it does</p>
+<pre class="r"><code>km.out=kmeans(x,4,nstart=15)
+km.out</code></pre>
+<pre><code>## K-means clustering with 4 clusters of sizes 32, 28, 20, 20
+## 
+## Cluster means:
+##         [,1]       [,2]
+## 1 -0.5787702  4.7639233
+## 2 -5.6518323  3.3513316
+## 3  1.4989983 -0.2412154
+## 4 -3.1104142  1.2535711
+## 
+## Clustering vector:
+##   [1] 2 4 1 2 4 1 2 4 1 1 3 1 1 3 4 3 2 3 2 2 2 2 2 3 1 1 4 2 4 1 2 3 2 4 4 3 3
+##  [38] 4 3 3 2 4 4 2 2 3 2 1 2 4 2 1 1 3 3 4 3 1 1 1 4 2 2 2 4 4 1 1 3 2 2 1 1 3
+##  [75] 1 3 2 1 1 1 4 1 4 1 2 3 1 2 2 1 1 4 2 4 1 1 3 3 1 1
+## 
+## Within cluster sum of squares by cluster:
+## [1] 53.04203 42.40322 34.95921 48.52107
+##  (between_SS / total_SS =  85.7 %)
+## 
+## Available components:
+## 
+## [1] &quot;cluster&quot;      &quot;centers&quot;      &quot;totss&quot;        &quot;withinss&quot;     &quot;tot.withinss&quot;
+## [6] &quot;betweenss&quot;    &quot;size&quot;         &quot;iter&quot;         &quot;ifault&quot;</code></pre>
+<pre class="r"><code>plot(x,col=km.out$cluster,cex=2,pch=1,lwd=2)
+points(x,col=which,pch=19)
+points(x, col=c(1,2,3,4)[which],pch=19)</code></pre>
+<p><img src="/posts/unsupervised/unsupervised_learning_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>As you can see the colors of the rings (known) are almost exactly matching the color of the points (calculated using <code>kmeans</code>)</p>
+</div>
+<div id="hierarchical-clustering" class="section level2">
+<h2>Hierarchical Clustering</h2>
+<p>Let’s see how the same data from above is handled by hierarchical clustering</p>
+<pre class="r"><code>hc.complete=hclust(dist(x), method=&quot;complete&quot;)
+plot(hc.complete)</code></pre>
+<p><img src="/posts/unsupervised/unsupervised_learning_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p>The plot shows using the complete method, which makes its decisions using the clustered points that are furthest apart. There are other methods that we could use that produce slightly different outputs</p>
+<pre class="r"><code>hc.single=hclust(dist(x),method=&quot;single&quot;)
+plot(hc.single)</code></pre>
+<p><img src="/posts/unsupervised/unsupervised_learning_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p>Using <code>method="single"</code> we do the opposite of complete, measure by the closest points within each cluster. You can see that with this it tends to find longer more drawn out clusters rather than the nice large jumps found in the earlier method.</p>
+<pre class="r"><code>hc.average=hclust(dist(x),method=&quot;average&quot;)
+plot(hc.average)</code></pre>
+<p><img src="/posts/unsupervised/unsupervised_learning_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>As you can imagine, using <code>method="average"</code> we use the average distance between each cluster to measure and you can see the resulting plot is somewhere in between the first two.</p>
+<hr />
+<p>Now let’s try comparing our results with the actual clusters in the data we built.</p>
+<p>We’re going to use the <code>cutree</code> function to cut the tree at level 4. This will produce a vector of numbers from 1 to 4 saying which branch each observation is on. We’re going to use the complete cluster to cut from.</p>
+<pre class="r"><code>hc.cut=cutree(hc.complete,4)
+table(hc.cut, which)</code></pre>
+<pre><code>##       which
+## hc.cut  1  2  3  4
+##      1  0 28  0  0
+##      2  1  0  0 20
+##      3 31  0  0  0
+##      4  0  0 20  0</code></pre>
+<pre class="r"><code>table(hc.cut, km.out$cluster)</code></pre>
+<pre><code>##       
+## hc.cut  1  2  3  4
+##      1  0 28  0  0
+##      2  1  0  0 20
+##      3 31  0  0  0
+##      4  0  0 20  0</code></pre>
+<p>With the above outputs we can see that the hierarchical tree cut at 4 ended up with very similar results to the kmeans cluster from before and to the original output.</p>
+<pre class="r"><code>plot(hc.complete, labels=which)</code></pre>
+<p><img src="/posts/unsupervised/unsupervised_learning_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>And above we can see how our results compare to the original choices. It’s not particularly clear doing it this way but you can spot the mismatches relatively easily.</p>
+</div>
+</div>

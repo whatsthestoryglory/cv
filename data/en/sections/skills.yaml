@@ -6,10 +6,20 @@ section:
   showOnNavbar: true
 
 skills:
+- name: Excel
+  logo: "images/sections/skills/excel.svg"
+  summary: "Advanced Excel user with significant experience building formulas, pivots, and reports"
+- name: Powerpoint
+  logo: "images/sections/skills/powerpoint.svg"
+  summary: "Well versed at putting together and presenting Powerpoint presentations for purposes such as training, marketing, and reporting metrics"
+- name: Continuous Improvement
+  logo: "images/sections/skills/continuousimprovement.svg"
+  summary: "Experienced creating a culture of Continous Improvement"
 - name: R
-  icon: /images/sections/skills/Rlogo.png
+  logo: "/images/sections/skills/Rlogo.png"
   summary: "Capable of analyzing data and preparing interactive reports using R."
   url: "https://www.r-project.org"
+
 - name: Root Cause Analysis
-  icon: images/sections/skills/rootcause.jpg
+  logo: "images/sections/skills/rootcause.jpg"
   summary: "Experienced at driving to Root Cause on a variety of problems"
