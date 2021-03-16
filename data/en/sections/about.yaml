@@ -26,7 +26,7 @@ socialLinks:
 # soft skills here
 softSkills:
 - name: Leadership
-  percentage: 92
+  percentage: 95
   color: blue
 - name: Daily Mgmt
   percentage: 80
@@ -38,6 +38,6 @@ softSkills:
   percentage: 90
   color: orange
 - name: R
-  percentage: 70
+  percentage: 60
   color: "#e7d378"
   

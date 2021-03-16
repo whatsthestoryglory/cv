@@ -6,20 +6,26 @@ section:
   showOnNavbar: true
 
 skills:
-- name: Excel
-  logo: "images/sections/skills/excel.svg"
-  summary: "Advanced Excel user with significant experience building formulas, pivots, and reports"
-- name: Powerpoint
-  logo: "images/sections/skills/powerpoint.svg"
-  summary: "Well versed at putting together and presenting Powerpoint presentations for purposes such as training, marketing, and reporting metrics"
-- name: Continuous Improvement
-  logo: "images/sections/skills/continuousimprovement.svg"
-  summary: "Experienced creating a culture of Continous Improvement"
-- name: R
-  logo: "/images/sections/skills/Rlogo.png"
-  summary: "Capable of analyzing data and preparing interactive reports using R."
-  url: "https://www.r-project.org"
-
 - name: Root Cause Analysis
   logo: "images/sections/skills/rootcause.jpg"
   summary: "Experienced at driving to Root Cause on a variety of problems"
+- name: Situational Leadership
+  logo: "/images/sections/skills/sl2.png"
+  summary: "Adept leader within and strong proponent of the Situational Leadership model"
+  url: "https://www.kenblanchard.com/Products-Services/SLII"
+- name: R
+  logo: "/images/sections/skills/Rlogo.png"
+  summary: "Capable of analyzing data and preparing repeatable, automated and interactive reports using R."
+  url: "https://www.r-project.org"
+- name: Powerpoint
+  logo: "images/sections/skills/powerpoint.svg"
+  summary: "Well versed at creating and presenting highly engaging Powerpoint presentations for purposes such as training, marketing, and reporting metrics"
+- name: Continuous Improvement
+  logo: "images/sections/skills/continuousimprovement.svg"
+  summary: "Experienced creating a culture of Continous Improvement"
+- name: Daily Visual Management
+  logo: "/images/sections/skills/visualmanagement.svg"
+  summary: "Expert user and creator of daily visual management tools to maintain team focus"
+- name: Excel
+  logo: "images/sections/skills/excel.svg"
+  summary: "Advanced Excel user with significant experience building formulas, pivots, and reports"
