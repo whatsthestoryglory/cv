@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Can&#39;t Stop Won&#39;t Stop</title>
+    
+
+
+
+
+
+
+
+
+  
+
+
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/style.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+<link rel="icon" type="image/png" href="/images/favicon_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_2.png" />
+
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+    
+<meta name="description" content="Can&#39;t Stop Won&#39;t Stop" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+
+    
+    
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MXY64PY325"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MXY64PY325');
+</script>
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_2.png">Cameron&#39;s CV</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_2.png" class="d-none" id="main-logo">
+  <img src="/images/inverted-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_2.png" class="d-none" id="inverted-logo">
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <input type="text" value="" placeholder="Search" data-search="" id="search-box" />
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/introduction/">Introduction</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/covid/">Ontario COVID</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://cameron.willmot.ca/images/default-hero.jpg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/cam.png'/>
+          <h5 class="author-name">Cameron Willmot</h5>
+          <p>January 1, 0001</p>
+        </div>
+
+        <div class="title">
+          <h1>Can&#39;t Stop Won&#39;t Stop</h1>
+        </div>
+
+        <div class="post-content" id="post-content">
+          
+<script src="/rmarkdown-libs/header-attrs/header-attrs.js"></script>
+
+
+<div id="correlations" class="section level2">
+<h2>Correlations</h2>
+<p>Everyone is talking about Gamestop these days and I can’t deny there’s an interesting story there, I’m just not sure exactly what it is. I was reading one person’s take on it the other day and they were describing how they believe that there will be some major market movement whenever the ball finally drops on the short interest in that stock. One of the main thrusts of their argument was to say that Gamestop has been inversely correlated with the market overall and that this is due to the short interests having to sell other stocks - dropping their price - in order to have money to make Gamestop purchases or re-up on their short inerest, which increases Gamestop’s price. Seems reasonable, and I too have noticed that Gamestop has - at least recently - been performing the opposite of the rest of the market. This workbook is my effort to prove - or disprove - this correlation.</p>
+<p>For the purposes of this workbook, I will only be going as granular as daily performance. I don’t have a good way right now for intraday data.</p>
+<p>First, we’re going to load our data. For simplicity’s sake, I’m just going to compare <span class="math inline">\(GME\)</span> to <span class="math inline">\(SPY\)</span></p>
+<pre class="r"><code>symbols &lt;- c(&quot;GME&quot;, &quot;SPY&quot;, &quot;BBY&quot;)
+stock_returns &lt;- symbols %&gt;%
+    tq_get(get  = &quot;stock.prices&quot;,
+           from = &quot;2018-01-01&quot;,
+           to   = Sys.Date()) 
+
+stock_returns_daily &lt;- stock_returns %&gt;%
+  group_by(symbol) %&gt;%
+  tq_transmute(select      = adjusted,
+               mutate_fun  = periodReturn,
+               period      =&quot;daily&quot;,
+               col_rename  = &quot;Ra&quot;)</code></pre>
+<pre class="r"><code>GME &lt;- stock_returns_daily$Ra[stock_returns_daily$symbol == &quot;GME&quot;]
+SPY &lt;- stock_returns_daily$Ra[stock_returns_daily$symbol == &quot;SPY&quot;]
+BBY &lt;- stock_returns_daily$Ra[stock_returns_daily$symbol == &quot;BBY&quot;]
+ccfvalues &lt;- ccf(SPY, GME, 10)</code></pre>
+<p><img src="/posts/2021-03-18-gamestop/gamestop_files/figure-html/perform_ccf-1.png" width="672" /></p>
+<pre class="r"><code>ccfvalues</code></pre>
+<pre><code>## 
+## Autocorrelations of series &#39;X&#39;, by lag
+## 
+##    -10     -9     -8     -7     -6     -5     -4     -3     -2     -1      0 
+## -0.024  0.064 -0.056 -0.003 -0.009  0.015  0.026 -0.008 -0.008 -0.004  0.103 
+##      1      2      3      4      5      6      7      8      9     10 
+## -0.066 -0.015  0.004 -0.010 -0.044 -0.005  0.038 -0.009  0.051  0.014</code></pre>
+<pre class="r"><code>astsa::lag2.plot(SPY, GME,10)</code></pre>
+<p><img src="/posts/2021-03-18-gamestop/gamestop_files/figure-html/lag2.plot-1.png" width="672" /></p>
+<p>From this output we can say pretty conclusively that, at least in the daily numbers, <span class="math inline">\(GME\)</span> and <span class="math inline">\(SPY\)</span> are not closely correlated. All of the correlation coefficients are less than 0.10 and there is a lot of variance from one day to the next. For comparison, let’s see how it would fare against a similar business, <span class="math inline">\(BBY\)</span>.</p>
+<pre class="r"><code>bbyccfvalues &lt;- ccf(BBY,GME,10)</code></pre>
+<p><img src="/posts/2021-03-18-gamestop/gamestop_files/figure-html/bby.lag2.plot-1.png" width="672" /></p>
+<pre class="r"><code>bbyccfvalues</code></pre>
+<pre><code>## 
+## Autocorrelations of series &#39;X&#39;, by lag
+## 
+##    -10     -9     -8     -7     -6     -5     -4     -3     -2     -1      0 
+##  0.023  0.039 -0.056 -0.029 -0.003 -0.016 -0.002  0.029 -0.019  0.044  0.122 
+##      1      2      3      4      5      6      7      8      9     10 
+## -0.065 -0.075 -0.046 -0.019 -0.025 -0.005  0.049  0.041  0.042  0.071</code></pre>
+<p>Here we can see that there is indeed a correlation between GME and BBY, though not a particularly strong one. What’s interesting is that GME appears to predict BBY instead of the other way around. You can see this in how the largest bars from the above chart are when Lag is &gt;0. We’re going to try and predict <span class="math inline">\(BBY\)</span> using <span class="math inline">\(GME\)</span> with a 1 and 2 day lag using a linear model. Let’s see how this goes…</p>
+<pre class="r"><code>x &lt;- cbind(lag(GME), lag(GME, n=2))
+y &lt;- BBY
+linear_model &lt;- lm(y~x)
+summary(linear_model)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = y ~ x)
+## 
+## Residuals:
+##       Min        1Q    Median        3Q       Max 
+## -0.151652 -0.011398  0.000926  0.012589  0.165039 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept)  0.0012800  0.0008943   1.431   0.1528  
+## x1          -0.0142735  0.0087704  -1.627   0.1040  
+## x2          -0.0170903  0.0087723  -1.948   0.0517 .
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.02525 on 802 degrees of freedom
+##   (2 observations deleted due to missingness)
+## Multiple R-squared:  0.008898,   Adjusted R-squared:  0.006427 
+## F-statistic:   3.6 on 2 and 802 DF,  p-value: 0.02776</code></pre>
+<p>From this output we can see that while there does appear to be a linear correlation between <span class="math inline">\(GME\)</span> 1-day and 2-day lag against <span class="math inline">\(BBY\)</span>, the P values are above the 5% threshold so I would generally accept the null hypothesis that there is no correlation. Additionally, the R-squared is only 0.01 so even if they were significant it doesn’t explain enough of the <span class="math inline">\(BBY\)</span> movement to be worth caring about.</p>
+</div>
+<div id="recent-history" class="section level2">
+<h2>Recent History</h2>
+<p>So we’ve proven that overall, from 2018-today there’s no correlation between <span class="math inline">\(GME\)</span> and <span class="math inline">\(SPY\)</span>, and that while there is a slight correlation between <span class="math inline">\(GME\)</span> and <span class="math inline">\(BBY\)</span> it’s not enough for a linear model within a 95% confidence interval. But let’s go back to the original problem - Gamestop’s recent volatility appearing to be linked negatively to the market. Perhaps our window is too large. Let’s re-run the analysis looking only at what’s happened from January 13, 2021 forward. January 13th is when there was a 57% price jump in a single day and a massive spike in trading volume.</p>
+<pre class="r"><code>stock_returns_daily_reduced &lt;- stock_returns[stock_returns$date &gt;= as.Date(&quot;2021-01-13&quot;),] %&gt;%
+  group_by(symbol) %&gt;%
+  tq_transmute(select      = adjusted,
+               mutate_fun  = periodReturn,
+               period      =&quot;daily&quot;,
+               col_rename  = &quot;Ra&quot;)</code></pre>
+<pre class="r"><code>GME_reduced &lt;- stock_returns_daily$Ra[stock_returns_daily$symbol == &quot;GME&quot;]
+SPY_reduced &lt;- stock_returns_daily$Ra[stock_returns_daily$symbol == &quot;SPY&quot;]
+BBY_reduced &lt;- stock_returns_daily$Ra[stock_returns_daily$symbol == &quot;BBY&quot;]
+ccfvalues_reduced &lt;- ccf(SPY_reduced, GME_reduced, 10)</code></pre>
+<p><img src="/posts/2021-03-18-gamestop/gamestop_files/figure-html/perform_ccf_reduced-1.png" width="672" /></p>
+<pre class="r"><code>ccfvalues_reduced</code></pre>
+<pre><code>## 
+## Autocorrelations of series &#39;X&#39;, by lag
+## 
+##    -10     -9     -8     -7     -6     -5     -4     -3     -2     -1      0 
+## -0.024  0.064 -0.056 -0.003 -0.009  0.015  0.026 -0.008 -0.008 -0.004  0.103 
+##      1      2      3      4      5      6      7      8      9     10 
+## -0.066 -0.015  0.004 -0.010 -0.044 -0.005  0.038 -0.009  0.051  0.014</code></pre>
+<pre class="r"><code>astsa::lag2.plot(SPY_reduced, GME_reduced,10)</code></pre>
+<p><img src="/posts/2021-03-18-gamestop/gamestop_files/figure-html/reduced_lag2.plot-1.png" width="672" /></p>
+<p>Once again, we see there is no meaningful correlation nor predictive value. Sorry, reddit poster. It looks like your premise is flawed. I think that’s about it for that theory today.</p>
+</div>
+
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/whatsthestoryglory/cv/edit/main/content/posts/gamestop/gamestop.html">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        <div class="row next-prev-navigator">
+
+
+  
+    
+      
+      <div class="col-md-6 previous-article">
+        <a href="/posts/introduction/" class="btn btn-outline-info">
+          <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
+          <br />
+          <span>Introduction</span>
+        </a>
+      </div>
+      
+    
+    
+  
+
+  
+
+  
+
+  
+
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+
+  
+
+
+
+
+  
+
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<footer class="container-fluid text-center align-content-center footer pb-2">
+  <div class="container pt-5">
+    <div class="row text-left">
+      <div class="col-md-4 col-sm-12">
+        <h5>Navigation</h5>
+        
+        <ul>
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#about">About</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#skills">Skills</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#experiences">Experiences</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#recent-posts">Recent Posts</a>
+              </li>
+            
+        </ul>
+        
+
+      </div>
+      
+      <div class="col-md-4 col-sm-12">
+        <h5>Contact me:</h5>
+        <ul>
+          
+          <li><span>Email: </span> <span>cwillmot@gmail.com</span></li>
+          
+        </ul>
+      </div>
+      
+      
+      <div class="col-md-4 col-sm-12">
+        
+        <p>Stay up to date with email notification</p>
+        <form>
+          <div class="form-group">
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+            />
+            <small id="emailHelp" class="form-text text-muted"
+              >We&#39;ll never share your email with anyone else.</small
+            >
+          </div>
+          <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+  <hr />
+  <div class="container">
+    <div class="row text-left">
+      <div class="col-md-4">
+        <a id="theme" href="https://github.com/hossainemruz/toha" target="#">
+          <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_2.png">
+          Toha
+        </a>
+      </div>
+      <div class="col-md-4 text-center">2021 Cameron Willmot.</div>
+      <div class="col-md-4 text-right">
+        <a id="hugo" href="https://gohugo.io/">Powered by
+        <img
+          src="/images/hugo-logo.svg"
+          alt="Hugo Logo"
+          height="18"
+        />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="/js/navbar.js"></script>
+<script src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>

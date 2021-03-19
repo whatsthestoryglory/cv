@@ -14,12 +14,10 @@ Like many people, I have been drawn to the vast amounts of data being made avail
 
 {{< leaflet >}}
 
-
 While doing this I learned a ton about
 - Locating and collecting data from the Ontario Government
 - Cleaning and associating data where key fields were not used consistently
 - Handling map data and simplifying geography so the leaflet didn't end up being huge and take a long time to render
 - How to use leaflet
-
 
 Read more about this on [my github](https://github.com/whatsthestoryglory/OntarioCOVID)

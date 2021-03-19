@@ -6,19 +6,10 @@
     <description>Recent content in Posts on Cameron&#39;s CV</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 11 Mar 2021 11:04:25 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 09 Mar 2021 17:00:00 -0500</lastBuildDate>
     
 	<atom:link href="https://cameron.willmot.ca/posts/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>UnsupervisedMethods</title>
-      <link>https://cameron.willmot.ca/posts/unsupervised/unsupervised_learning/</link>
-      <pubDate>Thu, 11 Mar 2021 11:04:25 -0500</pubDate>
-      
-      <guid>https://cameron.willmot.ca/posts/unsupervised/unsupervised_learning/</guid>
-      <description>Unsupervised Statistical Learning Methods Earlier this week I completed a Statistical Learning course from Stanford put on by Trevor Hastie and Rob Tibshirani. I was drawn to this course because I had stumbled upon An Introduction to Statistical Learning as I looked to learn more about how to measure, and perhaps more importantly, visualize the Quality data I was reviewing in my role as a Quality Manager. The following post is more or less the same as the .</description>
-    </item>
     
     <item>
       <title>Ontario COVID-19 Active Case Tracking</title>
