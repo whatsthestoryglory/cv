@@ -18,6 +18,7 @@ While doing this I learned a ton about
 - Locating and collecting data from the Ontario Government
 - Cleaning and associating data where key fields were not used consistently
 - Handling map data and simplifying geography so the leaflet didn't end up being huge and take a long time to render
-- How to use leaflet
+- How to handle geospatial data and render interactive maps with Leaflet
+- How to create parameterized R Markdown reports
 
 Read more about this on [my github](https://github.com/whatsthestoryglory/OntarioCOVID)

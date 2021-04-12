@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ontario COVID-19 Active Case Tracking</title>
+    <title>Dynamic Playlist Generator</title>
     
 
 
@@ -36,7 +36,7 @@
 <link rel="stylesheet" href="/css/style.css"/>
 
     
-<meta name="description" content="Ontario COVID-19 Active Case Tracking Map" />
+<meta name="description" content="Using SQL to create the ultimate personal radio station" />
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
@@ -133,12 +133,21 @@
   
   
   
+  
+    
+    <li><a class="" href="/posts/covid/">Ontario COVID</a></li>
+  
+
+  
+  
+  
+  
     
     
   
   
     
-    <li><a class="active" href="/posts/covid/">Ontario COVID</a></li>
+    <li><a class="active" href="/posts/sqlplaylist/">Dynamic Playlist</a></li>
   
 
   
@@ -165,7 +174,7 @@
   <div class="content">
     <div class="container p-0 read-area">
       
-      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://cameron.willmot.ca/posts/covid/hero.svg);'>
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://cameron.willmot.ca/images/default-hero.jpg);'>
       </div>
 
       
@@ -173,35 +182,26 @@
         <div class="author-profile ml-auto align-self-lg-center">
           <img class="rounded-circle" src='/images/author/cam.png'/>
           <h5 class="author-name">Cameron Willmot</h5>
-          <p>March 9, 2021</p>
+          <p>April 12, 2021</p>
         </div>
 
         <div class="title">
-          <h1>Ontario COVID-19 Active Case Tracking</h1>
+          <h1>Dynamic Playlist Generator</h1>
         </div>
 
         <div class="post-content" id="post-content">
-          <p>Like many people, I have been drawn to the vast amounts of data being made available by governments as they track the COVID-19 pandemic.  As I progressed through the data loading and cleaning phases of learning data science, I thought there might be a cool opportunity for a quick visualization of the data I was playing with.</p>
-<div class="embed leaflet-map">
-<iframe seamless src="https://toriandcam.willmot.ca/shiny/users/cam/OntarioCOVID/index.html" width="100%" height="500"></iframe>
-</div>
-
-<p>While doing this I learned a ton about</p>
-<ul>
-<li>Locating and collecting data from the Ontario Government</li>
-<li>Cleaning and associating data where key fields were not used consistently</li>
-<li>Handling map data and simplifying geography so the leaflet didn&rsquo;t end up being huge and take a long time to render</li>
-<li>How to handle geospatial data and render interactive maps with Leaflet</li>
-<li>How to create parameterized R Markdown reports</li>
-</ul>
-<p>Read more about this on <a href="https://github.com/whatsthestoryglory/OntarioCOVID">my github</a></p>
+          <h2 id="the-problem">The Problem</h2>
+<p>I have been known to have something of an eclectic music taste.  I can go from TOOL to Billy Eilish to Big K.R.I.T. to Nelly Furtado to Armin van Buuren without much consideration.  While I occasionally end up going down a bit of a genre rabbit hole from time to time, generally I like the mix.  I get bored if I listen to too much of the same genre.
+With that said, I find most ways of having music picked for me to be frustrating.  Listening to the radio you end up only hearing top singles from a generally narrow genre band, so you&rsquo;re changing stations often.  The same thing happens with most of the dynamic playlists I&rsquo;ve experienced from Spotify and similar streaming services - they take an artist or two that you&rsquo;re in to and play you a bunch of music that sounds like them.  It just always feels too narrow to me, and just because I like Sigrid and Lorde doesn&rsquo;t mean I&rsquo;m interested in Katy Perry and Justin Bieber, you know?</p>
+<h2 id="the-fix">The Fix</h2>
+<p>This is how I fixed this problem.</p>
 
         </div>
 
         
         
           <div class="btn-improve-page">
-              <a href="https://github.com/whatsthestoryglory/cv/edit/main/content/posts/covid/index.md">
+              <a href="https://github.com/whatsthestoryglory/cv/edit/main/content/posts/sqlplaylist/index.md">
                 <i class="fas fa-code-branch"></i>
                 Improve this page
               </a>
@@ -216,36 +216,24 @@
   
 
   
-    
-      
-      <div class="col-md-6 previous-article">
-        <a href="/posts/newpost/" class="btn btn-outline-info">
-          <span><i class="fas fa-chevron-circle-left"></i> Prev</span>
-          <br />
-          <span>Dynamic Playlist Generator</span>
-        </a>
-      </div>
-      
+
+  
+
+  
     
     
       
         
         
-          
-              
-          
-        
-        <div class="col-md-6 next-article">
-          <a href="/posts/introduction/" class="btn btn-outline-info">
+        <div class="col-md-12 next-article">
+          <a href="/posts/newpost/" class="btn btn-outline-info">
             <span>Next <i class="fas fa-chevron-circle-right"></i></span>
             <br />
-            <span>Introduction</span>
+            <span>Dynamic Playlist Generator</span>
           </a>
         </div>
       
     
-  
-
   
 
 </div>
@@ -268,7 +256,12 @@
       <h5 class="text-center pl-3">Table of Contents</h5>
       <hr>
       <div class="toc">
-        <nav id="TableOfContents"></nav>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-problem">The Problem</a></li>
+    <li><a href="#the-fix">The Fix</a></li>
+  </ul>
+</nav>
       </div>
     </div>
     
@@ -349,7 +342,7 @@
                 
               
               <li class="nav-item">
-                <a class="smooth-scroll" href="#projects">Projects</a>
+                <a class="smooth-scroll" href="#recent-posts">Recent Posts</a>
               </li>
             
             
@@ -358,7 +351,7 @@
                 
               
               <li class="nav-item">
-                <a class="smooth-scroll" href="#recent-posts">Recent Posts</a>
+                <a class="smooth-scroll" href="#projects">Projects</a>
               </li>
             
         </ul>

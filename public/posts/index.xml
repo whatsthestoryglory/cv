@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Cameron&#39;s CV</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 09 Mar 2021 17:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 09 Apr 2021 12:29:25 -0500</lastBuildDate>
     
 	<atom:link href="https://cameron.willmot.ca/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Dynamic Playlist Generator</title>
+      <link>https://cameron.willmot.ca/posts/newpost/</link>
+      <pubDate>Fri, 09 Apr 2021 12:29:25 -0500</pubDate>
+      
+      <guid>https://cameron.willmot.ca/posts/newpost/</guid>
+      <description>The Problem I have been known to have something of an eclectic music taste. I can go from TOOL to Billy Eilish to Big K.R.I.T. to Nelly Furtado to Armin van Buuren without much consideration. While I occasionally end up going down a bit of a genre rabbit hole from time to time, generally I like the mix. I get bored if I listen to too much of the same genre.</description>
+    </item>
     
     <item>
       <title>Ontario COVID-19 Active Case Tracking</title>
@@ -19,7 +28,7 @@
       <guid>https://cameron.willmot.ca/posts/covid/</guid>
       <description>Like many people, I have been drawn to the vast amounts of data being made available by governments as they track the COVID-19 pandemic. As I progressed through the data loading and cleaning phases of learning data science, I thought there might be a cool opportunity for a quick visualization of the data I was playing with.
   While doing this I learned a ton about
- Locating and collecting data from the Ontario Government Cleaning and associating data where key fields were not used consistently Handling map data and simplifying geography so the leaflet didn&amp;rsquo;t end up being huge and take a long time to render How to use leaflet  Read more about this on my github</description>
+ Locating and collecting data from the Ontario Government Cleaning and associating data where key fields were not used consistently Handling map data and simplifying geography so the leaflet didn&amp;rsquo;t end up being huge and take a long time to render How to handle geospatial data and render interactive maps with Leaflet How to create parameterized R Markdown reports  Read more about this on my github</description>
     </item>
     
     <item>
