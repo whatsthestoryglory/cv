@@ -344,6 +344,7 @@ DROP TABLE randomweightedratingscombined;
 	limit 10;
 </code></pre><p>Then, just like the original example, I&rsquo;m going to join all of these together to create a single table, and then select 50 tracks total at random from it.</p>
 <pre><code>-- PlaylistName:Random rated songs
+-- PlaylistOption Unlimited:1
 -- PlaylistGroups:
 create temporary table fivestartracks as select tracks.url as url from tracks
 	left join dynamicplaylist_history on
@@ -447,7 +448,110 @@ DROP TABLE allselectionscombined;
       genres.name&lt;&gt;'Rap/Hip-Hop' AND
       genres.name&lt;&gt;'Rap/Hip Hop' AND
       genres.name&lt;&gt;'Gangsta Rap' ;
-</code></pre><p>Now I have an easy &ldquo;Just Press Play&rdquo; solution to listening to music around the house.  Every time I press play, something different will play, and it will lean towards music I like.  Perfect!</p>
+</code></pre><h2 id="final-output">Final Output</h2>
+<p>Now let&rsquo;s check our work and take a look at what a sample playlist might look like</p>
+<table>
+<thead>
+<tr>
+<th>Song Title</th>
+<th>Artist</th>
+<th>Album Title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Magpie</td>
+<td>Caribou</td>
+<td>Suddenly</td>
+</tr>
+<tr>
+<td>Good Ass Intro</td>
+<td>Chance the Rapper feat. BJ the Chicago Kid</td>
+<td>Acid Rap</td>
+</tr>
+<tr>
+<td>Like Toy Soldiers</td>
+<td>Eminem</td>
+<td>Encore</td>
+</tr>
+<tr>
+<td>00000 Million</td>
+<td>Bon Iver</td>
+<td>22, a Million</td>
+</tr>
+<tr>
+<td>That Song</td>
+<td>Big Wreck</td>
+<td>Big Shiny Tunes 3</td>
+</tr>
+<tr>
+<td>In the City</td>
+<td>Eagles</td>
+<td>Hell Freezes Over</td>
+</tr>
+<tr>
+<td>Streets on Fire</td>
+<td>Lupe Fiasco</td>
+<td>Lupe Fiasco’s The Cool</td>
+</tr>
+<tr>
+<td>LOVE.</td>
+<td>Kendrick Lamar feat. Zacari</td>
+<td>DAMN.</td>
+</tr>
+<tr>
+<td>HEAD SHOTS</td>
+<td>Tobe Nwigwe feat. D Smoke</td>
+<td>CINCORIGINALS</td>
+</tr>
+<tr>
+<td>Electric Feel</td>
+<td>MGMT</td>
+<td>Oracular Spectacular</td>
+</tr>
+<tr>
+<td>We Go On</td>
+<td>The Avalanches feat. Cola Boyy &amp; Mick Jones</td>
+<td>We Will Always Love You</td>
+</tr>
+<tr>
+<td>Sunny&rsquo;s Time</td>
+<td>Caribou</td>
+<td>Suddenly</td>
+</tr>
+<tr>
+<td>Spill Vill</td>
+<td>Spillage Village, Desi Banks &amp; Big Rube feat. Kountry Wayne</td>
+<td>Spilligion</td>
+</tr>
+<tr>
+<td>Moon Song</td>
+<td>Phoebe Bridgers</td>
+<td>Punisher</td>
+</tr>
+<tr>
+<td>Oblique City</td>
+<td>Phoenix</td>
+<td>Bankrupt!</td>
+</tr>
+<tr>
+<td>Oh My Heart</td>
+<td>R.E.M.</td>
+<td>Collapse Into Now</td>
+</tr>
+<tr>
+<td>Conventioneers</td>
+<td>Barenaked Ladies</td>
+<td>Maroon</td>
+</tr>
+<tr>
+<td>初登場</td>
+<td>UNKLE</td>
+<td>Rōnin I</td>
+</tr>
+</tbody>
+</table>
+<p>Now I have an easy &ldquo;Just Press Play&rdquo; solution to listening to music around the house.  Every time I press play, something different will play, and it will lean towards music I like.  Perfect!</p>
 
         </div>
 
@@ -523,6 +627,7 @@ DROP TABLE allselectionscombined;
         <li><a href="#what-about-my-wife">What about my wife?</a></li>
       </ul>
     </li>
+    <li><a href="#final-output">Final Output</a></li>
   </ul>
 </nav>
       </div>

@@ -297,4 +297,31 @@ create temporary table reducedtracks as select * from tracks
       genres.name<>'Rap/Hip Hop' AND
       genres.name<>'Gangsta Rap' ;
 ```
+
+## Final Output
+
+Now let's check our work and take a look at what a sample playlist might look like
+
+| Song Title         | Artist                                                      | Album Title             |
+|--------------------|-------------------------------------------------------------|-------------------------|
+| Magpie             | Caribou                                                     | Suddenly                |
+| Good Ass Intro     | Chance the Rapper feat. BJ the Chicago Kid                  | Acid Rap                |
+| Like Toy Soldiers  | Eminem                                                      | Encore                  |
+| 00000 Million      | Bon Iver                                                    | 22, a Million           |
+| That Song          | Big Wreck                                                   | Big Shiny Tunes 3       |
+| In the City        | Eagles                                                      | Hell Freezes Over       |
+| Streets on Fire    | Lupe Fiasco                                                 | Lupe Fiasco’s The Cool  |
+| LOVE.              | Kendrick Lamar feat. Zacari                                 | DAMN.                   |
+| HEAD SHOTS         | Tobe Nwigwe feat. D Smoke                                   | CINCORIGINALS           |
+| Electric Feel      | MGMT                                                        | Oracular Spectacular    |
+| We Go On           | The Avalanches feat. Cola Boyy & Mick Jones                 | We Will Always Love You |
+| Sunny's Time       | Caribou                                                     | Suddenly                |
+| Spill Vill         | Spillage Village, Desi Banks & Big Rube feat. Kountry Wayne | Spilligion              |
+| Moon Song          | Phoebe Bridgers                                             | Punisher                |
+| Oblique City       | Phoenix                                                     | Bankrupt!               |
+| Oh My Heart        | R.E.M.                                                      | Collapse Into Now       |
+| Conventioneers     | Barenaked Ladies                                            | Maroon                  |
+| 初登場             | UNKLE                                                       | Rōnin I                 |
+
+
 Now I have an easy "Just Press Play" solution to listening to music around the house.  Every time I press play, something different will play, and it will lean towards music I like.  Perfect!
