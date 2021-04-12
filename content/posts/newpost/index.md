@@ -185,6 +185,7 @@ Then, just like the original example, I'm going to join all of these together to
 
 ```
 -- PlaylistName:Random rated songs
+-- PlaylistOption Unlimited:1
 -- PlaylistGroups:
 create temporary table fivestartracks as select tracks.url as url from tracks
 	left join dynamicplaylist_history on
