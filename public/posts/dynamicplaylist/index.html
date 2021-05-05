@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dynamic Playlist Generator</title>
+    
+
+
+
+
+
+
+
+
+  
+
+
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/layouts/main.css"/>
+<link rel="stylesheet" href="/css/style.css"/>
+<link rel="stylesheet" href="/css/navigators/navbar.css"/>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Muli:wght@300;400;500;600" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+
+<link rel="icon" type="image/png" href="/images/favicon_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_2.png" />
+
+
+<link rel="stylesheet" href="/css/style.css"/>
+
+    
+<meta name="description" content="Using SQL to create the ultimate personal radio station" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/atom-one-dark.min.css"
+/>
+<link rel="stylesheet" href="/css/layouts/single.css"/>
+<link rel="stylesheet" href="/css/navigators/sidebar.css">
+
+
+    
+    
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MXY64PY325"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MXY64PY325');
+</script>
+    
+  </head>
+
+  <body data-spy="scroll" data-target="#TableOfContents" data-offset="80">
+    <div class="container-fluid bg-dimmed wrapper">
+      
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+<nav class="navbar navbar-expand-xl top-navbar final-navbar shadow">
+  <div class="container">
+      <button class="navbar-toggler navbar-light" id="sidebar-toggler" type="button" onclick="toggleSidebar()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/">
+      <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_2.png">Cameron&#39;s CV</a>
+    <button class="navbar-toggler navbar-light" id="toc-toggler" type="button" onclick="toggleTOC()">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse lang-selector" id="top-nav-items">
+      <ul class="navbar-nav ml-auto">
+      
+      </ul>
+    </div>
+  </div>
+  
+  <img src="/images/main-logo_hu864bbe108f1be1ae04b57f7f2fd9d631_5637_42x0_resize_box_2.png" class="d-none" id="main-logo">
+  <img src="/images/inverted-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_42x0_resize_box_2.png" class="d-none" id="inverted-logo">
+</nav>
+
+
+
+      
+      
+  <section class="sidebar-section" id="sidebar-section">
+    <div class="sidebar-holder">
+      <div class="sidebar" id="sidebar">
+        <input type="text" value="" placeholder="Search" data-search="" id="search-box" />
+        <div class="sidebar-tree">
+          <ul class="tree" id="tree">
+            <li id="list-heading"><a href="/posts" data-filter="all">Posts</a></li>
+            <div class="subtree">
+                
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/introduction/">Introduction</a></li>
+  
+
+  
+  
+  
+  
+  
+    
+    <li><a class="" href="/posts/covid/">Ontario COVID</a></li>
+  
+
+  
+  
+  
+  
+    
+    
+  
+  
+    
+    <li><a class="active" href="/posts/dynamicplaylist/">SQLPlaylist</a></li>
+  
+
+
+            </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+      
+      
+<section class="content-section" id="content-section">
+  <div class="content">
+    <div class="container p-0 read-area">
+      
+      <div class="hero-area col-sm-12" id="hero-area" style='background-image: url(https://cameron.willmot.ca/posts/dynamicplaylist/hero.svg);'>
+      </div>
+
+      
+      <div class="page-content">
+        <div class="author-profile ml-auto align-self-lg-center">
+          <img class="rounded-circle" src='/images/author/cam.png'/>
+          <h5 class="author-name">Cameron Willmot</h5>
+          <p>April 9, 2021</p>
+        </div>
+
+        <div class="title">
+          <h1>Dynamic Playlist Generator</h1>
+        </div>
+
+        <div class="post-content" id="post-content">
+          <h2 id="the-problem">The Problem</h2>
+<p>I have been known to have something of an eclectic music taste.  I can go from <code>TOOL</code> to <code>Billy Eilish</code> to <code>Big K.R.I.T.</code> to <code>Nelly Furtado</code> to <code>Armin van Buuren</code> without much consideration.  While I occasionally end up going down a bit of a genre rabbit hole from time to time, generally I like the mix.  I get bored if I listen to too much of the same genre.
+With that said, I find most ways of having music picked for me to be frustrating.  Listening to the radio you end up only hearing top singles from a generally narrow genre band, so you&rsquo;re changing stations often.  The same thing happens with most of the dynamic playlists I&rsquo;ve experienced from Spotify and similar streaming services - they take an artist or two that you&rsquo;re in to and play you a bunch of music that sounds like them.  It just always feels too narrow to me, and just because I like <code>Sigrid</code> and <code>Lorde</code> doesn&rsquo;t mean I&rsquo;m interested in <code>Katy Perry</code> and <code>Justin Bieber</code>, you know?</p>
+<h2 id="the-fix">The Fix</h2>
+<h3 id="first-step">First Step</h3>
+<p>I have a large library of music at home and I use the <code>Logitech Media Server</code> (also known as <code>SqueezeboxServer</code>) to manage and play it across all my devices.  This allows me to do cool things like play the same music, synchronized, in each room of the house, without being locked into a specific vendor or format like Airplay.  This software has a robust selection of features and third party plugins that enable it to do just about anything I could possibly need.</p>
+<p>I started by rating my music.  With over 25,000 tracks in the library, this is a long, boring, and time consuming process, but it needs to be done.  I created a scheme for myself to help with the ratings.</p>
+<table>
+<thead>
+<tr>
+<th align="right">Rating</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">5☆</td>
+<td>I pretty much always want to listen to this.  <code>DNA</code> by <code>Kendrick Lamar</code> fit in here.</td>
+</tr>
+<tr>
+<td align="right">4.5☆</td>
+<td>Great music, but maybe not every day.  <code>Time</code> by <code>Jungle</code> is one example for me on this one.</td>
+</tr>
+<tr>
+<td align="right">4☆</td>
+<td>A little less than 4.5☆ but still music I know well and enjoy.  <code>Bullet with Butterfly Wings</code> by <code>The Smashing Pumpkins</code></td>
+</tr>
+<tr>
+<td align="right">3.5☆</td>
+<td>Music I enjoy when it comes on the radio, but don&rsquo;t go out of my way to put on.  <code>Just a Girl</code> by <code>No Doubt</code></td>
+</tr>
+<tr>
+<td align="right">3☆</td>
+<td>Music that&rsquo;s adjacent to the higher ☆ levels, but isn&rsquo;t otherwise a big draw for me.  <code>Don't Carry it All</code> by <code>The Decemberists</code></td>
+</tr>
+<tr>
+<td align="right">2.5☆</td>
+<td>Other music that doesn&rsquo;t stand out as bad. <code>Everything Will Be Alright</code> by <code>The Killers</code></td>
+</tr>
+<tr>
+<td align="right">&lt;2.5☆</td>
+<td>Music I have because it&rsquo;s a part of an album, but don&rsquo;t want to listen to randomly like intros, outros, and skits</td>
+</tr>
+</tbody>
+</table>
+<h3 id="second-step">Second Step</h3>
+<p>Next I needed to find a way to generate playlists from this data.  I started by installing the <code>TrackStat</code> and <code>Dynamic Playlists</code> plugins for <code>Logitech Media Server</code>, which was great in that it gave me a way to play a dynamic playlist based on the ratings.  Unfortunately, it didn&rsquo;t give me much flexibility beyond selecting a rating I wanted to listen to, or just saying I want to listen to something like the &ldquo;Top rated not played recently.&rdquo;  This didn&rsquo;t quite fit the bill for me, I want a wider experience than that.</p>
+<p>In my younger years I would listen to the <code>A State of Trance</code> podcast by <code>Armin van Buuren</code> quite regularly.  One of the things that always stood out to me, both on this podcast itself but also in DJ sets overall, was that while I would enjoy the set overall, not every song was a &lsquo;banger&rsquo;.  In fact, when there would be a set made up of &lsquo;top songs&rsquo; I would generally tune out, it was too much.  Sets needed breathing room.  You have a really exciting track or two that pulls the crowd in and gets the energy up, and then you lighten up or slow down a little to give everybody a breather before bringing the energy back.  This is what I wanted from my playlists, to have lots of great music but intersperse it with unfamiliar or &lsquo;less great&rsquo; music so it didn&rsquo;t get tiring.  This also gives the benefit of helping to explore music I don&rsquo; know as well, without getting too tired of completely unknown music.  In comes the <code>SQL Playlist</code> plugin.</p>
+<h3 id="sql-playlist-plugin">SQL Playlist Plugin</h3>
+<p>In short, this plugin does exactly what it says, lets you use custom SQL for generating playlists.  It comes with several defaults to try and a creator to make some of your own if you don&rsquo;t know SQL yourself.  By using this I can create a single playlist that meets all of my needs by combining ratings, how recently a song was played, and how recently a song was added, and every time I click it I will end up with a completely unique playlist of music I love, like, sort-of know, and have yet to hear, mixed together.</p>
+<h3 id="generating-the-sql">Generating the SQL</h3>
+<p>I started by creating one of the predefined playlist types and reviewing the SQL.  This gives me a starting point showing what columns I can use and what needs to be returned for the playlist to work.</p>
+<pre><code>-- PlaylistName:Cams Playlist Generator
+-- PlaylistGroups:
+create temporary table randomweightedratingslow as select tracks.url as url from tracks
+	left join dynamicplaylist_history on
+		tracks.id=dynamicplaylist_history.id and dynamicplaylist_history.client='PlaylistPlayer'
+	left join track_statistics on
+		tracks.url=track_statistics.url
+	where
+		audio=1
+		and track_statistics.rating&lt;50
+		and dynamicplaylist_history.id is null
+		and ifnull(track_statistics.lastplayed,0)&lt;(unix_timestamp()-86400)
+	order by random()
+	limit 30;
+
+
+create temporary table randomweightedratingshigh as select tracks.url as url from tracks
+	left join dynamicplaylist_history on
+		tracks.id=dynamicplaylist_history.id and dynamicplaylist_history.client='PlaylistPlayer'
+	left join track_statistics on
+		tracks.url=track_statistics.url
+	where
+		audio=1
+		and track_statistics.rating&gt;=50
+		and dynamicplaylist_history.id is null
+		and ifnull(track_statistics.lastplayed,0)&lt;(unix_timestamp()-86400)
+	order by random()
+	limit 70;
+
+create temporary table randomweightedratingscombined as 
+	SELECT * FROM randomweightedratingslow 
+	UNION 
+	SELECT * from randomweightedratingshigh;
+
+SELECT * from randomweightedratingscombined 
+	ORDER BY random() 
+	limit 10;
+
+DROP TABLE randomweightedratingshigh;
+DROP TABLE randomweightedratingslow;
+DROP TABLE randomweightedratingscombined;
+</code></pre><p>This is a perfect example for my needs.  Basically what this SQL does is it creates two separate lists; the first pulls 30 low-rated tracks and the second pulls 70 high-rated tracks; then combines them to make a 100 track list and pulls 10 at random from it.  Perfect, this is exactly what I was going for.  Now to create my own version.</p>
+<h2 id="my-custom-playlist">My Custom Playlist</h2>
+<p>First, lets get the 5☆ tracks.  You&rsquo;ll remember I described these as music I pretty much always want to listen to.  Let&rsquo;s grab 10 of the ones that haven&rsquo;t been listened to in 24hrs.</p>
+<pre><code>create temporary table fivestartracks as select tracks.url as url from tracks
+	left join dynamicplaylist_history on
+		tracks.id=dynamicplaylist_history.id and dynamicplaylist_history.client='PlaylistPlayer'
+	left join track_statistics on
+		tracks.url=track_statistics.url
+	where
+		audio=1
+		and track_statistics.rating=100
+		and dynamicplaylist_history.id is null
+		and ifnull(track_statistics.lastplayed,0)&lt;(unix_timestamp()-86400)
+	order by random()
+	limit 10;
+</code></pre><p>Next, let&rsquo;s broaden the allowable ratings, but push out the last listened to be 3 days.</p>
+<pre><code>create temporary table fourhalfstartracks as select tracks.url as url from tracks
+	left join dynamicplaylist_history on
+		tracks.id=dynamicplaylist_history.id and dynamicplaylist_history.client='PlaylistPlayer'
+	left join track_statistics on
+		tracks.url=track_statistics.url
+	where
+		audio=1
+		and track_statistics.rating&gt;=90
+		and dynamicplaylist_history.id is null
+		and ifnull(track_statistics.lastplayed,0)&lt;(unix_timestamp()-259200)
+	order by random()
+	limit 10;
+</code></pre><p>And again once more, further increasing the last listened limit and reducing the minimum rating limit.</p>
+<pre><code>create temporary table fourstartracks as select tracks.url as url from tracks
+	left join dynamicplaylist_history on
+		tracks.id=dynamicplaylist_history.id and dynamicplaylist_history.client='PlaylistPlayer'
+	left join track_statistics on
+		tracks.url=track_statistics.url
+	where
+		audio=1
+		and track_statistics.rating&gt;=80
+		and dynamicplaylist_history.id is null
+		and ifnull(track_statistics.lastplayed,0)&lt;(unix_timestamp()-604800)
+	order by random()
+	limit 10;
+</code></pre><p>Now let&rsquo;s open it up wide, collect everything above 2.5☆</p>
+<pre><code>create temporary table twopointfiveuptracks as select tracks.url as url from tracks
+	left join dynamicplaylist_history on
+		tracks.id=dynamicplaylist_history.id and dynamicplaylist_history.client='PlaylistPlayer'
+	left join track_statistics on
+		tracks.url=track_statistics.url
+	where
+		audio=1
+		and track_statistics.rating&gt;=50
+		and dynamicplaylist_history.id is null
+		and ifnull(track_statistics.lastplayed,0)&lt;(unix_timestamp()-604800)
+	order by random()
+	limit 10;
+</code></pre><p>Music that I&rsquo;ve recently added or modified is generally going to be something I&rsquo;m interested in hearing.  Let&rsquo;s add some recently modified to the mix.</p>
+<pre><code>create temporary table recentlymodifiedtracks as select tracks.url as url from tracks
+	left join dynamicplaylist_history on
+		tracks.id=dynamicplaylist_history.id and dynamicplaylist_history.client='PlaylistPlayer'
+	left join track_statistics on
+		tracks.url=track_statistics.url
+	where
+		audio=1
+		and track_statistics.rating&gt;=50
+    and track_statistics.added&gt;STRFTIME(&quot;%s&quot;,DATE('NOW','-30 DAY'))
+		and dynamicplaylist_history.id is null
+		and ifnull(track_statistics.lastplayed,0)&lt;(unix_timestamp()-86400)
+	order by random()
+	limit 10;
+</code></pre><p>Then, just like the original example, I&rsquo;m going to join all of these together to create a single table, and then select 50 tracks total at random from it.</p>
+<pre><code>-- PlaylistName:Random rated songs
+-- PlaylistOption Unlimited:1
+-- PlaylistGroups:
+create temporary table fivestartracks as select tracks.url as url from tracks
+	left join dynamicplaylist_history on
+		tracks.id=dynamicplaylist_history.id and dynamicplaylist_history.client='PlaylistPlayer'
+	left join track_statistics on
+		tracks.url=track_statistics.url
+	where
+		audio=1
+		and track_statistics.rating=100
+		and dynamicplaylist_history.id is null
+		and ifnull(track_statistics.lastplayed,0)&lt;(unix_timestamp()-86400)
+	order by random()
+	limit 10;
+
+create temporary table fourhalfstartracks as select tracks.url as url from tracks
+	left join dynamicplaylist_history on
+		tracks.id=dynamicplaylist_history.id and dynamicplaylist_history.client='PlaylistPlayer'
+	left join track_statistics on
+		tracks.url=track_statistics.url
+	where
+		audio=1
+		and track_statistics.rating&gt;=90
+		and dynamicplaylist_history.id is null
+		and ifnull(track_statistics.lastplayed,0)&lt;(unix_timestamp()-259200)
+	order by random()
+	limit 20;
+
+create temporary table fourstartracks as select tracks.url as url from tracks
+	left join dynamicplaylist_history on
+		tracks.id=dynamicplaylist_history.id and dynamicplaylist_history.client='PlaylistPlayer'
+	left join track_statistics on
+		tracks.url=track_statistics.url
+	where
+		audio=1
+		and track_statistics.rating&gt;=80
+		and dynamicplaylist_history.id is null
+		and ifnull(track_statistics.lastplayed,0)&lt;(unix_timestamp()-604800)
+	order by random()
+	limit 20;
+
+create temporary table twopointfiveuptracks as select tracks.url as url from tracks
+	left join dynamicplaylist_history on
+		tracks.id=dynamicplaylist_history.id and dynamicplaylist_history.client='PlaylistPlayer'
+	left join track_statistics on
+		tracks.url=track_statistics.url
+	where
+		audio=1
+		and track_statistics.rating&gt;=50
+		and dynamicplaylist_history.id is null
+		and ifnull(track_statistics.lastplayed,0)&lt;(unix_timestamp()-604800)
+	order by random()
+	limit 10;
+
+create temporary table recentlymodifiedtracks as select tracks.url as url from tracks
+	left join dynamicplaylist_history on
+		tracks.id=dynamicplaylist_history.id and dynamicplaylist_history.client='PlaylistPlayer'
+	left join track_statistics on
+		tracks.url=track_statistics.url
+	where
+		audio=1
+		and track_statistics.rating&gt;=50
+    and track_statistics.added&gt;STRFTIME(&quot;%s&quot;,DATE('NOW','-30 DAY'))
+		and dynamicplaylist_history.id is null
+		and ifnull(track_statistics.lastplayed,0)&lt;(unix_timestamp()-86400)
+	order by random()
+	limit 10;
+
+create temporary table allselectionscombined as 
+	SELECT * FROM fivestartracks 
+	UNION 
+	SELECT * FROM fourhalfstartracks
+  UNION
+  SELECT * FROM fourstartracks
+  UNION
+  SELECT * FROM twopointfiveuptracks
+  UNION
+  SELECT * FROM recentlymodifiedtracks ;
+
+SELECT * from allselectionscombined 
+	ORDER BY random() 
+	limit 50;
+
+DROP TABLE fourhalfstartracks;
+DROP TABLE twopointfiveuptracks;
+DROP TABLE recentlymodifiedtracks;
+DROP TABLE fivestartracks;
+DROP TABLE allselectionscombined;
+</code></pre><p>There we go, now I have a playlist generator that builds playlists dynamically based on ratings I set up, what I have listened to recently, and what I have added recently.</p>
+<h2 id="final-output">Final Output</h2>
+<p>Now let&rsquo;s check our work and take a look at what a sample playlist might look like</p>
+<table>
+<thead>
+<tr>
+<th>Song Title</th>
+<th>Artist</th>
+<th>Album Title</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Magpie</td>
+<td>Caribou</td>
+<td>Suddenly</td>
+</tr>
+<tr>
+<td>Good Ass Intro</td>
+<td>Chance the Rapper feat. BJ the Chicago Kid</td>
+<td>Acid Rap</td>
+</tr>
+<tr>
+<td>Like Toy Soldiers</td>
+<td>Eminem</td>
+<td>Encore</td>
+</tr>
+<tr>
+<td>00000 Million</td>
+<td>Bon Iver</td>
+<td>22, a Million</td>
+</tr>
+<tr>
+<td>That Song</td>
+<td>Big Wreck</td>
+<td>Big Shiny Tunes 3</td>
+</tr>
+<tr>
+<td>In the City</td>
+<td>Eagles</td>
+<td>Hell Freezes Over</td>
+</tr>
+<tr>
+<td>Streets on Fire</td>
+<td>Lupe Fiasco</td>
+<td>Lupe Fiasco’s The Cool</td>
+</tr>
+<tr>
+<td>LOVE.</td>
+<td>Kendrick Lamar feat. Zacari</td>
+<td>DAMN.</td>
+</tr>
+<tr>
+<td>HEAD SHOTS</td>
+<td>Tobe Nwigwe feat. D Smoke</td>
+<td>CINCORIGINALS</td>
+</tr>
+<tr>
+<td>Electric Feel</td>
+<td>MGMT</td>
+<td>Oracular Spectacular</td>
+</tr>
+<tr>
+<td>We Go On</td>
+<td>The Avalanches feat. Cola Boyy &amp; Mick Jones</td>
+<td>We Will Always Love You</td>
+</tr>
+<tr>
+<td>Sunny&rsquo;s Time</td>
+<td>Caribou</td>
+<td>Suddenly</td>
+</tr>
+<tr>
+<td>Spill Vill</td>
+<td>Spillage Village, Desi Banks &amp; Big Rube feat. Kountry Wayne</td>
+<td>Spilligion</td>
+</tr>
+<tr>
+<td>Moon Song</td>
+<td>Phoebe Bridgers</td>
+<td>Punisher</td>
+</tr>
+<tr>
+<td>Oblique City</td>
+<td>Phoenix</td>
+<td>Bankrupt!</td>
+</tr>
+<tr>
+<td>Oh My Heart</td>
+<td>R.E.M.</td>
+<td>Collapse Into Now</td>
+</tr>
+<tr>
+<td>Conventioneers</td>
+<td>Barenaked Ladies</td>
+<td>Maroon</td>
+</tr>
+<tr>
+<td>初登場</td>
+<td>UNKLE</td>
+<td>Rōnin I</td>
+</tr>
+</tbody>
+</table>
+<p>Now I have an easy &ldquo;Just Press Play&rdquo; solution to listening to music around the house.  Every time I press play, something different will play, and it will lean towards music I like.  Perfect!</p>
+<h3 id="what-about-my-wife">What about my wife?</h3>
+<p>My wife and I have very similar music tastes, though she tends to find I listen to a <em>little too much</em> rap and eletronic music.  So, I created a variant of my playlist generator that would work for her.</p>
+<p>To make this as easy as possible, I created another temporary table called reducedtracks that would select all tracks <em>except</em> those labelled with Rap, Hip Hop, and related genres.  I then modified the subsequent tables to pull from reducedtracks instead of tracks and everything else <em>just worked</em>.</p>
+<pre><code>create temporary table reducedtracks as select * from tracks
+  join genre_track ON 
+    tracks.id=genre_track.track
+      join genres ON genres.id = genre_track.genre AND
+      genres.name&lt;&gt;'Trance' AND 
+      genres.name&lt;&gt;'Electronic' AND 
+      genres.name&lt;&gt;'Rap' AND
+      genres.name&lt;&gt;'Hip Hop' AND
+      genres.name&lt;&gt;'Hip-Hop' AND
+      genres.name&lt;&gt;'Rap/Hip-Hop' AND
+      genres.name&lt;&gt;'Rap/Hip Hop' AND
+      genres.name&lt;&gt;'Gangsta Rap' ;
+</code></pre>
+        </div>
+
+        
+        
+          <div class="btn-improve-page">
+              <a href="https://github.com/whatsthestoryglory/cv/edit/main/content/posts/dynamicplaylist/index.md">
+                <i class="fas fa-code-branch"></i>
+                Improve this page
+              </a>
+          </div>
+        
+
+        
+      <hr />
+        <div class="row next-prev-navigator">
+
+
+  
+
+  
+
+  
+    
+    
+      
+        
+        
+        <div class="col-md-12 next-article">
+          <a href="/posts/covid/" class="btn btn-outline-info">
+            <span>Next <i class="fas fa-chevron-circle-right"></i></span>
+            <br />
+            <span>Ontario COVID-19 Active Case Tracking</span>
+          </a>
+        </div>
+      
+    
+  
+
+</div>
+
+      <hr />
+      
+      
+      </div>
+    </div>
+  </div>
+  
+</section>
+
+
+      
+      
+  <section class="toc-section" id="toc-section">
+    
+    <div class="toc-holder">
+      <h5 class="text-center pl-3">Table of Contents</h5>
+      <hr>
+      <div class="toc">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#the-problem">The Problem</a></li>
+    <li><a href="#the-fix">The Fix</a>
+      <ul>
+        <li><a href="#first-step">First Step</a></li>
+        <li><a href="#second-step">Second Step</a></li>
+        <li><a href="#sql-playlist-plugin">SQL Playlist Plugin</a></li>
+        <li><a href="#generating-the-sql">Generating the SQL</a></li>
+      </ul>
+    </li>
+    <li><a href="#my-custom-playlist">My Custom Playlist</a></li>
+    <li><a href="#final-output">Final Output</a>
+      <ul>
+        <li><a href="#what-about-my-wife">What about my wife?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </div>
+    </div>
+    
+  </section>
+
+    </div>
+
+    
+
+  
+
+
+
+
+  
+
+
+
+
+  
+  
+    
+  
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<footer class="container-fluid text-center align-content-center footer pb-2">
+  <div class="container pt-5">
+    <div class="row text-left">
+      <div class="col-md-4 col-sm-12">
+        <h5>Navigation</h5>
+        
+        <ul>
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#about">About</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#skills">Skills</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#experiences">Experiences</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#projects">Projects</a>
+              </li>
+            
+            
+              
+              
+                
+              
+              <li class="nav-item">
+                <a class="smooth-scroll" href="#recent-posts">Recent Posts</a>
+              </li>
+            
+        </ul>
+        
+
+      </div>
+      
+      <div class="col-md-4 col-sm-12">
+        <h5>Contact me:</h5>
+        <ul>
+          
+          <li><span>Email: </span> <span>cwillmot@gmail.com</span></li>
+          
+        </ul>
+      </div>
+      
+      
+      <div class="col-md-4 col-sm-12">
+        
+        <p>Stay up to date with email notification</p>
+        <form>
+          <div class="form-group">
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+            />
+            <small id="emailHelp" class="form-text text-muted"
+              >We&#39;ll never share your email with anyone else.</small
+            >
+          </div>
+          <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+  <hr />
+  <div class="container">
+    <div class="row text-left">
+      <div class="col-md-4">
+        <a id="theme" href="https://github.com/hossainemruz/toha" target="#">
+          <img src="/images/theme-logo_hu8376fd15465fef26ffe66b6bcf0ca686_13669_32x0_resize_box_2.png">
+          Toha
+        </a>
+      </div>
+      <div class="col-md-4 text-center">2021 Cameron Willmot.</div>
+      <div class="col-md-4 text-right">
+        <a id="hugo" href="https://gohugo.io/">Powered by
+        <img
+          src="/images/hugo-logo.svg"
+          alt="Hugo Logo"
+          height="18"
+        />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <script src="/js/jquery-3.4.1.min.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<script src="/js/navbar.js"></script>
+<script src="/js/main.js"></script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+<script src="/js/single.js"></script>
+<script>
+  hljs.initHighlightingOnLoad();
+</script>
+
+
+  </body>
+</html>

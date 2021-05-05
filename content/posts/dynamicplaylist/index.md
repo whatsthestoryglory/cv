@@ -31,7 +31,7 @@ I started by rating my music.  With over 25,000 tracks in the library, this is a
 | 3.5☆  | Music I enjoy when it comes on the radio, but don't go out of my way to put on.  `Just a Girl` by `No Doubt`  |
 | 3☆  | Music that's adjacent to the higher ☆ levels, but isn't otherwise a big draw for me.  `Don't Carry it All` by `The Decemberists`  |
 | 2.5☆  | Other music that doesn't stand out as bad. `Everything Will Be Alright` by `The Killers`  |
-| <2.5☆  | Music I have because it's a part of an album, but don't want to listen to randomly  |
+| <2.5☆  | Music I have because it's a part of an album, but don't want to listen to randomly like intros, outros, and skits |
 
 ### Second Step
 
@@ -277,27 +277,6 @@ DROP TABLE allselectionscombined;
 
 There we go, now I have a playlist generator that builds playlists dynamically based on ratings I set up, what I have listened to recently, and what I have added recently.
 
-### What about my wife?
-
-My wife and I have very similar music tastes, though she tends to find I listen to a *little too much* rap and eletronic music.  So, I created a variant of my playlist generator that would work for her.
-
-To make this as easy as possible, I created another temporary table called reducedtracks that would select all tracks *except* those labelled with Rap, Hip Hop, and related genres.  I then modified the subsequent tables to pull from reducedtracks instead of tracks and everything else *just worked*.
-
-```
-create temporary table reducedtracks as select * from tracks
-  join genre_track ON 
-    tracks.id=genre_track.track
-      join genres ON genres.id = genre_track.genre AND
-      genres.name<>'Trance' AND 
-      genres.name<>'Electronic' AND 
-      genres.name<>'Rap' AND
-      genres.name<>'Hip Hop' AND
-      genres.name<>'Hip-Hop' AND
-      genres.name<>'Rap/Hip-Hop' AND
-      genres.name<>'Rap/Hip Hop' AND
-      genres.name<>'Gangsta Rap' ;
-```
-
 ## Final Output
 
 Now let's check our work and take a look at what a sample playlist might look like
@@ -325,3 +304,24 @@ Now let's check our work and take a look at what a sample playlist might look li
 
 
 Now I have an easy "Just Press Play" solution to listening to music around the house.  Every time I press play, something different will play, and it will lean towards music I like.  Perfect!
+
+### What about my wife?
+
+My wife and I have very similar music tastes, though she tends to find I listen to a *little too much* rap and eletronic music.  So, I created a variant of my playlist generator that would work for her.
+
+To make this as easy as possible, I created another temporary table called reducedtracks that would select all tracks *except* those labelled with Rap, Hip Hop, and related genres.  I then modified the subsequent tables to pull from reducedtracks instead of tracks and everything else *just worked*.
+
+```
+create temporary table reducedtracks as select * from tracks
+  join genre_track ON 
+    tracks.id=genre_track.track
+      join genres ON genres.id = genre_track.genre AND
+      genres.name<>'Trance' AND 
+      genres.name<>'Electronic' AND 
+      genres.name<>'Rap' AND
+      genres.name<>'Hip Hop' AND
+      genres.name<>'Hip-Hop' AND
+      genres.name<>'Rap/Hip-Hop' AND
+      genres.name<>'Rap/Hip Hop' AND
+      genres.name<>'Gangsta Rap' ;
+```

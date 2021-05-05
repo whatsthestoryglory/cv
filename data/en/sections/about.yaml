@@ -26,18 +26,25 @@ socialLinks:
 # soft skills here
 softSkills:
 - name: Leadership
-  percentage: 95
-  color: blue
-- name: Daily Mgmt
-  percentage: 80
-  color: green
-- name: Data Analysis
-  percentage: 75
-  color: yellow
+  percentage: 85
+  color: "#2167ba"
+
 - name: Problem Solving
   percentage: 90
-  color: orange
-- name: R
-  percentage: 60
-  color: "#e7d378"
-  
+  color: "#ffb963"
+
+- name: Training
+  percentage: 80
+  color: "#63ff6b"
+
+- name: Data Analysis
+  percentage: 75
+  color: "#b963ff"
+
+- name: Process Dev.
+  percentage: 95
+  color: "#ff6b63"
+
+- name: Daily Mgmt
+  percentage: 95
+  color: green
