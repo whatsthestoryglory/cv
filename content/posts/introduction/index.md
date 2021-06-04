@@ -5,11 +5,11 @@ description: Getting Started
 hero: /images/posts/writing-posts/Idea.svg
 menu:
   sidebar:
-      name: Introduction
-      identifier: introduction
-      weight: 10
+    name: Introduction
+    identifier: introduction
+    weight: 10
 ---
 
-Greetings and welcome!  This is my first post to my CV site.
+Greetings and welcome! This is my first post to my CV site.
 
-This site will serve as a landing page for projects I work on in my spare time  You can expect to see some cool data analysis using `R` and `python`.
+This site will serve as a landing page for projects I work on in my spare time You can expect to see some cool data analysis using `R` and `python`.
