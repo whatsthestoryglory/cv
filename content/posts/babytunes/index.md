@@ -14,7 +14,7 @@ As any new parent will tell you, there is no shortage of toys for babies that pl
 
 ## Off the Shelf
 
-![OwlToy](/images/writing-posts/owl.png)
+{{< img src="/images/writing-posts/owl.png" width=40% align=center alt="Owl Toy">}}
 
 In the first few months, our baby - like most - stayed in our bedroom with us. I won't bore you with all the details of newborn sleep schedules, just trust me when I say there was lots of time spent trying to get a baby to sleep, or to make sure the sleeping baby stayed that way. Over this time, we tried all of them.
 
@@ -26,9 +26,9 @@ Eventually, we settled on a two device setup. We would take the electronics out 
 
 ## Enter Mac Miller.
 
-![Mac Miller](/images/writing-posts/macmiller.png#center)
+{{< img src="/images/writing-posts/macmiller.png" width=40% align=center alt="Mac Miller">}}
 
-While pregnant, my wife listened to `Mac Miller - Circles` frequently and noted that the baby would respond in the womb while she was. Occasionally during their most difficult times she would bring it up on her phone while rocking the baby to sleep and it would help. There was one song in particular that really resonated.
+While pregnant, my wife listened to `Mac Miller - Circles` frequently and noted that the baby would respond in the womb while this album was playing. Occasionally during their most difficult times she would bring it up on her phone while rocking the baby to sleep and it would help. There was one song in particular that really resonated.
 
 {{< macmillerspotify >}}
 
@@ -36,7 +36,7 @@ It was like magic, the crying would be replaced with quiet and calm in an instan
 
 ## Teeth
 
-![](/images/writing-posts/babyteeth.png#center)
+{{< img src="/images/writing-posts/babyteeth.png" width=40% align=center alt="Teething baby in pain">}}
 
 Teething is one of those things that no parent (or child) enjoys. Can you imagine the pain, discomfort, and confusion you must feel as a baby while your teeth form and push their way through your gums? You have no frame of reference for anything that's happening, just constant pain in your mouth for…oh no how long does this go on for? Add to that the fear that separation anxiety can bring about and all of a sudden all your "get the baby to sleep" tricks stop working so well.
 
@@ -48,7 +48,7 @@ _Alternate title: I never thought I'd care this much about white noise_
 
 If our baby was going to keep giving us nights like this (he was), I needed to figure something else out. I had a couple [raspberry pi](https://www.raspberrypi.org/) computers kicking around and figured with them I can get us down to a single device playing noise/music, eliminate our reliance on charged batteries, and give us remote control all at the same time.
 
-![](/images/writing-posts/raspi.png)
+{{< img src="/images/writing-posts/raspi.png" width=40% align=center alt="Raspberry Pi Computer">}}
 
 ### Proof of concept
 
@@ -102,7 +102,7 @@ Above is the script I created within Home Assistant. Upon being called, this scr
 
 After testing the script, I then created a button within one of my dashboards to trigger the script.
 
-![PlayButton](/images/writing-posts/playmacbutton.png)
+{{< img src="/images/writing-posts/playmacbutton.png" width=40% alt="Button with ZZZ" align=center >}}
 
 ### Sleep
 
@@ -114,6 +114,6 @@ Fortunately, everything worked swimming-ly. (Okay, that was a bad Mac Miller jok
 
 Pulling out your phone, navigating to an app, then to the correct screen in the app, is a bit of a pain especially when a baby is screaming in your face. We have a TRÅDFRI remote that already controls the lights in the room through Home Assistant, so next will be assigning one of the buttons on the remote to trigger the music.
 
-![Tradfri](/images/writing-posts/tradfributton.png)
+{{< img src="/images/writing-posts/tradfributton.png" width=40% align=center alt="Ikea Tradfri Remote">}}
 
 Then, the proof of concept will be turned in to a more solid product that can be kept in the baby room without concern. The portable speaker will be replaced with standalone speakers and an enclosure will be built to house everything together and include a power switch. Pair this with a USB battery pack and I not only have a sleep machine for the baby, but a portable boom box for any time!

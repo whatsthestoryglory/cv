@@ -6,10 +6,20 @@
     <description>Recent content on Cameron&#39;s CV</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Apr 2021 12:29:25 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 13 Jun 2021 16:00:00 -0500</lastBuildDate>
     
 	<atom:link href="https://cameron.willmot.ca/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Baby Tunes</title>
+      <link>https://cameron.willmot.ca/posts/babytunes/</link>
+      <pubDate>Sun, 13 Jun 2021 16:00:00 -0500</pubDate>
+      
+      <guid>https://cameron.willmot.ca/posts/babytunes/</guid>
+      <description>As any new parent will tell you, there is no shortage of toys for babies that play music and/or make white noise to help them sleep. Between stuffed animals with built-in electronics, baby monitor cameras, and wind-up music boxes that we received as baby shower gifts, we had at least 5 music/noise generators around our baby&amp;rsquo;s room. Unfortunately, none of them worked very well.
+Off the Shelf In the first few months, our baby - like most - stayed in our bedroom with us.</description>
+    </item>
     
     <item>
       <title>Dynamic Playlist Generator</title>
