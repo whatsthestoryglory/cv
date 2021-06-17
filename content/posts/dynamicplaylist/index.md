@@ -5,8 +5,8 @@ description: Using SQL to create the ultimate personal radio station
 hero: /images/posts/writing-posts/Idea.svg
 menu:
   sidebar:
-    name: SQLPlaylist
-    identifier: sqlplaylist
+    name: Dynamic Playlist
+    identifier: dynamicplaylist
     weight: 15
 ---
 
