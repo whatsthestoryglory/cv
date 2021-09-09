@@ -6,10 +6,19 @@
     <description>Recent content on Cameron&#39;s CV</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 13 Jun 2021 16:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Sun, 29 Aug 2021 11:29:25 -0500</lastBuildDate>
     
 	<atom:link href="https://cameron.willmot.ca/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Scraping product prices from the internet</title>
+      <link>https://cameron.willmot.ca/posts/ctscraper/</link>
+      <pubDate>Sun, 29 Aug 2021 11:29:25 -0500</pubDate>
+      
+      <guid>https://cameron.willmot.ca/posts/ctscraper/</guid>
+      <description>All summer long I have wanted to purchase a new grill. I did a ton of research, looking for the perfect combination of size, features, and longevity, and what I quickly found was that my last qualifier - longevity - was one of the most expensive qualities to buy for. Quality grills are expensive at current regular prices, perhaps I needed to wait for a sale. I just needed to find one.</description>
+    </item>
     
     <item>
       <title>Baby Tunes</title>

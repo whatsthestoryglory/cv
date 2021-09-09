@@ -1,7 +1,7 @@
 ---
-title: "Creating a price tracker"
+title: "Scraping product prices from the internet"
 date: 2021-08-29T11:29:25-05:00
-description: Scraping product pages to track price changes
+description: Building a web scraper for popular e-commerce sites
 hero: /images/posts/writing-posts/Idea.svg
 menu:
   sidebar:
@@ -25,16 +25,46 @@ library(rvest)
 product_page <- read_html("https://www.canadiantire.ca/en/pdp/shark-rocket-ultra-light-corded-stick-vacuum-0436795p.html")
 ```
 
-Unfortunately, this didn't work. The session hung indefinitely and I had to stop it manually. It appears that the Canadian Tire website I was attempting to scrape decides what to send based on your user agent.
+Unfortunately for me, this didn't work. The session hung and no HTML was read. What happened?
+
+### Diagnosing the Problem
+
+With any Programming problem (really, most problems), I like to start by going step by step through the process that encountered the problem. After a little bit of research, I found that `rvest` uses `httr`, and that `httr` uses `libcurl` to perform requests. I figured I'd go straight to the source and try using `libcurl` directly from the command line.
+
+```
+curl https://www.canadiantire.ca/en/pdp/shark-rocket-ultra-light-corded-stick-vacuum-0436795p.html
+```
+
+I got a response this time...sort of.
+
+```
+<HTML><HEAD>
+<TITLE>Access Denied</TITLE>
+</HEAD><BODY>
+<H1>Access Denied</H1>
+
+You don't have permission to access "http&#58;&#47;&#47;www&#46;canadiantire&#46;ca&#47;en&#47;pdp&#47;shark&#45;rocket&#45;ultra&#45;light&#45;corded&#45;stick&#45;vacuum&#45;0436795p&#46;html" on this server.<P>
+Reference&#32;&#35;18&#46;95973017&#46;1631193900&#46;91d69
+</BODY>
+</HTML>
+```
+
+Now that's interesting. Why do I get 'Access Denied' from `curl` but I can still view the site in my browser? Something else is going on.
 
 ### User Agents
 
-What is a user agent? When you visit a website, the user agent is a string that your browser sends to the website to tell it what kind of software you're running. This allows the website to offer different results based on your equipment and software, helping to eliminate compatibility issues. I'm using `rvest` which is reflected in the user agent sent to the website, and the website sees this and returns an "Access Denied" error back to me. I guess they only want browsers they're familiar with visiting the store.
+What is a user agent? When you visit a website, the user agent is a string that your browser sends to the website to tell it what kind of software you're running. This allows the website to offer different results based on your equipment and software, helping to eliminate compatibility issues. When I use `rvest` or `curl` this program name is reflected in the user agent sent to the website, and the website sees this and returns an "Access Denied" error back to me. I guess they only want browsers they're familiar with visiting the store.
 
-To get around this, I changed my code slightly. I manually defined a user agent string so the website in question would see my query as coming from a regular browser and respond accordingly.
+Conveniently, curl offers a way to manually define what user agent is sent. I then tried setting the user agent to mimic that of a Windows 10 PC accessing the site through Firefox.
 
 ```
-product_response <- GET("https://www.canadiantire.ca/en/pdp/shark-rocket-ultra-light-corded-stick-vacuum-0436795p.html", user_agent("Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101 Firefox/91.0")
+curl https://www.canadiantire.ca/en/pdp/shark-rocket-ultra-light-corded-stick-vacuum-0436795p.html -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101 Firefox/91.0"
+```
+
+Success! I now saw the page returned by `curl`. Now we just need to apply the same process back to my `R` code. Unfortunately, the `rvest` package doesn't have a function to set the user agent, but `httr` does.
+
+```
+product_response <- GET("https://www.canadiantire.ca/en/pdp/shark-rocket-ultra-light-corded-stick-vacuum-0436795p.html", user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101 Firefox/91.0")
 product_page <- read_html(product_response)
 ```
 
@@ -42,7 +72,9 @@ Perfect, now it worked, I have an html page loaded in to the variable `product_p
 
 ### Selecting a field
 
-Next, I poked through the site using the [SelectorGadget](https://selectorgadget.com/) plugin for Chrome to identify the field I wanted to scrape. I found the class `.price__reg-value_multisku` contained the price, so I continued to follow the article and modified their code to pull the price from the html.
+Within the `rvest` package is the `html_nodes` function which allows you to search through the HTML and look for specific fields from their CSS.
+
+To find what field I would need to search for, I poked through the site using the [SelectorGadget](https://selectorgadget.com/) plugin for Chrome. I found the class `.price__reg-value_multisku` contained the price, so I continued to follow the article and modified their code to pull the price from the html.
 
 ```
 product_page %>%
@@ -52,19 +84,19 @@ product_page %>%
 #> character(0)
 ```
 
-What? I did everything right this time, what happened??
+What? I was sure I did everything right this time, what happened??
 
 I have to admit, this one took me a while to figure out. I needed to save the html file and sift through it manually before it made sense. There was no `.price__reg-value_multisku` in the HTML I saved! I loaded the page again into my browser and opened the source code to compare, and it was there, but it wasn't in the code I downloaded with R. What was going on?
 
+## Rendering the Page
+
+Many, if not most, of today's websites have some form of dynamic content on them. This could be showing you the store closest to you, updating the page to have a darker background when viewed in the evening, or even changing the price depending on your location. What I found when looking through the html file I saved was that in this case, all of the product information was loaded dynamically. The HTML my browser was sent would include only the barebones of the page, and then there was some `JS` scripting that would go on to request the specifics of the product separately and then render them. All of this happens so quickly in the browser that you may not even notice, but unfortunately my method of getting the page did notice.
+
 ### The magic of PhantomJS
 
-Reviewing the HTML source downloaded by R I noticed that there was very little product content included in it at all. It was like all the fields that mattered to me were excluded when I downloaded the HTML manually. Then I had a lightbulb moment, Javascript!
+[PhantomJS](https://phantomjs.org/) is a "Scriptable Headless Browser." Basically what that means is that it does the things your regular web browser would do, but without needing a screen to display it on. You can then write scripts telling it to do things with these results, such as capturing a screenshot of the fully rendered page, or saving the final HTML once all javascript has run.
 
-I realized that what was happening was when loading the page in my browser, some javascript was being run that updated the page with all the details I was looking for. When I download the HTML I get references to these scripts, but they're not being run so the information I'm looking for isn't there. Enter PhantomJS.
-
-[PhantomJS](https://phantomjs.org/) is a "Scriptable Headless Browser." Basically what that means is that it does the things your regular web browser would do, but without displaying the results to a screen. You can then write scripts telling it to do things with these results, such as capturing a screenshot of the fully rendered page, or saving the final HTML once all javascript has run.
-
-I found [this blog](https://velaco.github.io/how-to-scrape-data-from-javascript-websites-with-R/) that gave me an example using PhantomJS to render the page and store the result as a .html file. I ran this file, modified to use my own link, and saved the page to `ctire.html`.
+I found [this blog](https://velaco.github.io/how-to-scrape-data-from-javascript-websites-with-R/) that gave me an example using PhantomJS to render the page and store the result as a .html file. I then ran their code, modified to use my own link, and saved the page to `ctire.html`.
 
 ```
 system("phantomjs.exe ctscrape.js")
@@ -88,7 +120,7 @@ After some searching, I came across a solution on [Github](https://gist.github.c
 return $("#signin-dropdown").is(":visible");
 ```
 
-In this example, you can see that we want the CSS element with the ID `signin-dropdown` to have the property of `visible`. For my purpose, I changed this to look for the class ID `.add-to-cart__button` and re-ran the test.
+In this example, you can see that we want the CSS element with the ID `signin-dropdown` to have the property of `visible`. For my purpose, I changed this to look for the class ID `.pdp-buy-box__primary-section` and re-ran the test.
 
 ```
 system("phantomjs.exe ctscrape.js")
@@ -100,4 +132,4 @@ product_page %>%
 #> "$149.99"
 ```
 
-Success! I can now scrape the price given a Canadian Tire product URL.
+Success! I can now scrape the price given a Canadian Tire product URL. In my next post, I'll talk about saving this result using [MongoDB](https://www.mongodb.com) and the power you can weild from there. Feel free to follow along on [my github](https://github.com/whatsthestoryglory/canada-price-tracker)
