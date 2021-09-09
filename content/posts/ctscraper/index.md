@@ -2,7 +2,7 @@
 title: "Scraping product prices from the internet"
 date: 2021-08-29T11:29:25-05:00
 description: Building a web scraper for popular e-commerce sites
-hero: /images/posts/writing-posts/Idea.svg
+hero: /images/posts/writing-posts/scraping.svg
 menu:
   sidebar:
     name: E-Store Scraping
